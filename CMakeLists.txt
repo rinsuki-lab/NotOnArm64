@@ -9,6 +9,7 @@ ExternalProject_Add(
     CMAKE_ARGS
         -A x64
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
+        -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
 )
 ExternalProject_Add(
     NotOnArm64_Payload_32
@@ -17,6 +18,7 @@ ExternalProject_Add(
     CMAKE_ARGS
         -A Win32
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
+        -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
 )
 ExternalProject_Add(
     NotOnArm64_Payload_64
@@ -25,6 +27,7 @@ ExternalProject_Add(
     CMAKE_ARGS
         -A x64
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
+        -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
 )
 
 add_custom_target(NotOnArm64 ALL DEPENDS NotOnArm64_Launcher NotOnArm64_Payload_32 NotOnArm64_Payload_64)
