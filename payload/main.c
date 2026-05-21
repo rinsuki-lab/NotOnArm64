@@ -9,4 +9,6 @@ BOOL WINAPI DllMain(
         case DLL_PROCESS_ATTACH:
             break;
     }
+
+    return TRUE;
 }
