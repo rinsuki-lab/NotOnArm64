@@ -21,6 +21,7 @@ ExternalProject_Add(
 ExternalProject_Add(
     NotOnArm64_Payload_64
     SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/payload
+    BUILD_ALWAYS true
     CMAKE_ARGS
         -A x64
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
