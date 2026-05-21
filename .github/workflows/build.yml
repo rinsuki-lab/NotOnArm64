@@ -24,7 +24,7 @@ jobs:
         mkdir dest/Acknowledgements
         cp ./third_party/minhook/LICENSE.txt dest/Acknowledgements/minhook.txt
         pushd dest
-        zip -r -9 ../NotOnArm64.zip .
+        7z a ../NotOnArm64.zip .
       shell: bash
     - uses: actions/upload-artifact@v7
       with:
