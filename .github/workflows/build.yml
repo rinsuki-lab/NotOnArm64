@@ -13,6 +13,8 @@ jobs:
     runs-on: windows-2025-vs2026
     steps:
     - uses: actions/checkout@v6
+      with:
+        submodules: true
     - run: cmake -Bbuild -DCMAKE_BUILD_TYPE=Release .
     - run: cmake --build build
     - uses: actions/upload-artifact@v7
