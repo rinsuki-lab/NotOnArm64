@@ -62,7 +62,6 @@ void InjectDllToTargetProcessW(HWND hWnd, HINSTANCE hInstance, LPWSTR lpCmdLine,
         OurErrorReport(L"Failed to inject DLL to target process");
         return;
     }
-    OurErrorReport(dllPath);
 }
 
 BOOL WINAPI Our_CreateProcessW(

@@ -9,9 +9,7 @@ IsWow64Process2_t Original_IsWow64Process2;
 
 BOOL WINAPI Our_IsWow64Process2(HANDLE hProcess, USHORT* pProcessMachine, USHORT* pNativeMachine) {
     BOOL result = Original_IsWow64Process2(hProcess, pProcessMachine, pNativeMachine);
-    OurErrorReport(L"called IsWow64Process2");
     if (result && *pNativeMachine == IMAGE_FILE_MACHINE_ARM64) {
-        OurErrorReport(L"IsWow64Process2: changing native machine from ARM64 to AMD64");
         *pNativeMachine = IMAGE_FILE_MACHINE_AMD64;
     } else {
         OurErrorReport(L"IsWow64Process2: native machine is not ARM64, no change needed");
