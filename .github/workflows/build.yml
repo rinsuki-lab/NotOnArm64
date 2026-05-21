@@ -3,10 +3,6 @@ on:
     branches: [master]
   pull_request:
   workflow_dispatch:
-    inputs:
-      make_release:
-        type: boolean
-        required: true
 
 jobs:
   build:
@@ -30,3 +26,31 @@ jobs:
       with:
         name: NotOnArm64
         path: NotOnArm64.zip
+  create_draft_release:
+    runs-on: ubuntu-slim
+    needs: [build]
+    if: github.event_name == 'workflow_dispatch'
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    steps:
+    - uses: actions/checkout@v6
+    - uses: actions/download-artifact@v8
+      with:
+        name: NotOnArm64
+    - run:
+        mv NotOnArm64.zip NotOnArm64.r${{ github.run_id }}.zip
+    - uses: actions/attest-build-provenance@v4
+      id: attest
+      with:
+        subject-path: "*.zip"
+    - name: Create Draft Release
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        gh release create "0.1.0r${{ github.run_id }}" \
+          --draft \
+          --title "r${{ github.run_id }}" \
+          --notes "Draft release created by workflow_dispatch\n\n<small>🤓 Attestation: ${{ steps.attest.outputs.attestation-url }}</small>" \
+          *.zip
