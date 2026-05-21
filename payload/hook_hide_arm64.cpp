@@ -27,5 +27,8 @@ bool HookHideArm64() {
         OurErrorReport(L"Failed to enable hook for IsWow64Process2");
         return FALSE;
     }
+    wchar_t modulePath[MAX_PATH];
+    GetModuleFileNameW(NULL, modulePath, MAX_PATH);
+    MessageBoxW(NULL, L"Hooked HideArm64!", modulePath, MB_OK);
     return TRUE;
 }
