@@ -9,6 +9,7 @@ add_library(
     main.cpp
     utils.cpp
     hook_create_process.cpp
+    hook_hide_arm64.cpp
 )
 target_link_libraries(NotOnArm64_Payload PRIVATE minhook Pathcch.lib)
 

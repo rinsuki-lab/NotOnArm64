@@ -12,7 +12,7 @@ int main() {
     ZeroMemory(&si, sizeof(si));
     si.cb = sizeof(si);
     PROCESS_INFORMATION pi;
-    BOOL success = CreateProcessW(L"C:\\Windows\\System32\\notepad.exe", NULL, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi);
+    BOOL success = CreateProcessW(L"C:\\Windows\\System32\\cmd.exe", NULL, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi);
     if (!success) {
         MessageBoxW(NULL, L"Failed to launch exe!", L"NotOnArm64_Launcher", MB_OK | MB_ICONERROR);
         return 1;
