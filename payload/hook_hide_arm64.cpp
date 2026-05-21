@@ -7,6 +7,7 @@
 using IsWow64Process2_t = decltype(&IsWow64Process2);
 IsWow64Process2_t Original_IsWow64Process2;
 
+// https://github.com/jrsoftware/issrc/blob/b1e8607385d9eda0f4e6bb8391d33b9b14bff994/Projects/Src/Setup.MainFunc.pas#L4211-L4224
 BOOL WINAPI Our_IsWow64Process2(HANDLE hProcess, USHORT* pProcessMachine, USHORT* pNativeMachine) {
     BOOL result = Original_IsWow64Process2(hProcess, pProcessMachine, pNativeMachine);
     if (result && *pNativeMachine == IMAGE_FILE_MACHINE_ARM64) {
