@@ -5,6 +5,7 @@ include(ExternalProject)
 ExternalProject_Add(
     NotOnArm64_Launcher
     SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/launcher
+    BUILD_ALWAYS true
     CMAKE_ARGS
         -A x64
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>
@@ -12,6 +13,7 @@ ExternalProject_Add(
 ExternalProject_Add(
     NotOnArm64_Payload_32
     SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/payload
+    BUILD_ALWAYS true
     CMAKE_ARGS
         -A Win32
         -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>

@@ -7,6 +7,11 @@ int main() {
         MessageBoxW(NULL, L"Failed to load DLL!", L"NotOnArm64_Launcher", MB_OK | MB_ICONERROR);
         return 1;
     }
-    MessageBoxW(NULL, L"Hello, World! 2", L"NotOnArm64_Launcher", MB_OK);
+
+    STARTUPINFOW si;
+    ZeroMemory(&si, sizeof(si));
+    si.cb = sizeof(si);
+    PROCESS_INFORMATION pi;
+    CreateProcessW(L"C:\\Windows\\System32\\notepad.exe", NULL, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi);
     return 0;
 }
