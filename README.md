@@ -7,3 +7,8 @@ Inno Setup を採用しているインストーラーに対して、Windows on A
 ## 使い方
 
 NotOnArm64_Launcher.exe を起動して、当該インストーラーを選択してください。
+もしインストーラーの選択が出ずに VCRUNTIME140.DLL がどうのとか言われたら https://aka.ms/vc14/vc_redist.arm64.exe をインストールしてください。
+
+## Acknowledgements
+
+* minhook: https://github.com/TsudaKageyu/minhook/blob/05c06c5bbca226b72ffb40fc0caaef33bcaf6f74/LICENSE.txt
