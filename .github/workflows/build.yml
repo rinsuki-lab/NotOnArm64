@@ -17,9 +17,16 @@ jobs:
         submodules: true
     - run: cmake -Bbuild -DCMAKE_BUILD_TYPE=Release .
     - run: cmake --build build --config Release
+    - run: |
+        mkdir dest
+        cp build/*.exe build/*.dll ./dest/
+        cp README.md ./dest/
+        mkdir dest/Acknowledgements
+        cp ./third_party/minhook/LICENSE.txt dest/Acknowledgements/minhook.txt
+        pushd dest
+        zip -r -9 ../NotOnArm64.zip .
+      shell: bash
     - uses: actions/upload-artifact@v7
       with:
         name: NotOnArm64
-        path: |
-          build/*.exe
-          build/*.dll
+        path: NotOnArm64.zip
