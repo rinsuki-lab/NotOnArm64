@@ -1,0 +1,23 @@
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      make_release:
+        type: boolean
+        required: true
+
+jobs:
+  build:
+    runs-on: windows-2025-vs2026
+    steps:
+    - uses: actions/checkout@v6
+    - run: cmake -Bbuild -DCMAKE_BUILD_TYPE=Release .
+    - run: cmake --build build
+    - uses: actions/upload-artifact@v7
+      with:
+        name: NotOnArm64
+        path: |
+          build/*.exe
+          build/*.dll
