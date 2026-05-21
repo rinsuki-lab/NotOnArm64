@@ -16,7 +16,7 @@ jobs:
       with:
         submodules: true
     - run: cmake -Bbuild -DCMAKE_BUILD_TYPE=Release .
-    - run: cmake --build build
+    - run: cmake --build build --config Release
     - uses: actions/upload-artifact@v7
       with:
         name: NotOnArm64
